@@ -1,21 +1,48 @@
 #include <cstdio>
+#include <iostream>
 
 namespace ra::cache {
-    // The matrix_transpose function is to utilize the cache-oblivious algorithm. This algorithm
-    // uses a divide and conquer strategy and is based on recursion. Note that, for optimal efficiency, the recursion
-    // should not be continued until a 1x1 matrix is encountered. For example, the base case for the recursion might
-    // be chosen to correspond to m*n <= 64.
-    template <class T>
-    void matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b) {
+    // cache-oblivious matrix transpose
+    template <typename T>
+    bool matrix_transpose_helper(const T* a, std::size_t m, std::size_t n, T* b, std::size_t t_m, std::size_t t_n) {
+        bool flag = false;
 
-    }
+        if (t_m * t_n <= 4) {
+            for (std::size_t i = 0; i < t_m; ++i) {
+                for (std::size_t j = 0; j < t_n; ++j) {
+                    if (b[j * m + i] == a[i * n + j]) {
+                        flag = true;
+                    }
 
-    template <class T>
-    void naive_matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b){
-        for(std::size_t i = 0; i < m; ++i){
-            for(std::size_t j = 0; j < n; ++j){
-                b[j][i] = a[i][j];
+                    b[j * m + i] = a[i * n + j];
+                }
+            }
+
+            return flag;
+        } else {
+            if (t_m < t_n) {
+                flag |= matrix_transpose_helper(a, m, n, b, t_m, t_n / 2);
+                flag |= matrix_transpose_helper(a + (t_n / 2), m, n, b + (t_n / 2) * m, t_m, t_n - t_n / 2);
+                return flag;
+            } else {
+                flag |= matrix_transpose_helper(a, m, n, b, t_m / 2, t_n);
+                flag |= matrix_transpose_helper(a + (t_m / 2) * n, m, n, b + (t_m / 2), t_m - t_m / 2, t_n);
+                return flag;
             }
         }
     }
-}
+
+    template <class T>
+    void matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b) {
+        matrix_transpose_helper(a, m, n, b, m, n);
+    }
+
+    template <class T>
+    void naive_matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b) {
+        for (std::size_t i = 0; i < m; ++i) {
+            for (std::size_t j = 0; j < n; ++j) {
+                b[j * m + i] = a[i * n + j];
+            }
+        }
+    }
+}  // namespace ra::cache
