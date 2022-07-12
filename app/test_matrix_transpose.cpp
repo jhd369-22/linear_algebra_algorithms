@@ -16,9 +16,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
 
         rc::matrix_transpose(a, m, n, c);
 
-        for(std::size_t i = 0; i < m; ++i) {
-            for(std::size_t j = 0; j < n; ++j) {
-                CHECK(b[j * m + i] == c[j * m + i]);
+        for(std::size_t i = 0; i < n; ++i) {    // b is n x m matrix
+            for(std::size_t j = 0; j < m; ++j) {
+                CHECK(b[i * m + j] == c[i * m + j]);
             }
         }
     }
@@ -33,9 +33,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
 
         rc::matrix_transpose(a, m, n, c);
 
-        for(std::size_t i = 0; i < m; ++i) {
-            for(std::size_t j = 0; j < n; ++j) {
-                CHECK(b[j * m + i] == c[j * m + i]);
+        for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
+            for (std::size_t j = 0; j < m; ++j) {
+                CHECK(b[i * m + j] == c[i * m + j]);
             }
         }
     }
@@ -54,9 +54,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
 
         rc::matrix_transpose(a, m, n, c);
 
-        for(std::size_t i = 0; i < m; ++i) {
-            for(std::size_t j = 0; j < n; ++j) {
-                CHECK(b[j * m + i] == c[j * m + i]);
+        for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
+            for (std::size_t j = 0; j < m; ++j) {
+                CHECK(b[i * m + j] == c[i * m + j]);
             }
         }
     }
@@ -78,9 +78,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
 
         rc::matrix_transpose(a, m, n, c);
 
-        for(std::size_t i = 0; i < m; ++i) {
-            for(std::size_t j = 0; j < n; ++j) {
-                CHECK(b[j * m + i] == c[j * m + i]);
+        for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
+            for (std::size_t j = 0; j < m; ++j) {
+                CHECK(b[i * m + j] == c[i * m + j]);
             }
         }
     }
@@ -95,9 +95,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
 
         rc::matrix_transpose(a, m, n, c);
 
-        for (std::size_t i = 0; i < m; ++i) {
-            for (std::size_t j = 0; j < n; ++j) {
-                CHECK(b[j * m + i] == c[j * m + i]);
+        for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
+            for (std::size_t j = 0; j < m; ++j) {
+                CHECK(b[i * m + j] == c[i * m + j]);
             }
         }
     }

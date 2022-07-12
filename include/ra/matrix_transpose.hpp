@@ -4,7 +4,8 @@
 namespace ra::cache {
     // cache-oblivious matrix transpose
     template <typename T>
-    bool matrix_transpose_helper(const T* a, std::size_t m, std::size_t n, T* b, std::size_t t_m, std::size_t t_n) {
+    bool matrix_transpose_helper(const T* a, std::size_t m, std::size_t n, T* b,
+                                 std::size_t t_m, std::size_t t_n) {
         bool flag = false;
 
         if (t_m * t_n <= 4) {
