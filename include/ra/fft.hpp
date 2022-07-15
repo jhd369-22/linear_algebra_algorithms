@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <numbers>  // Numerics library: std::number::pi_v, std::numbers::e_v
 #include <ra/matrix_transpose.hpp>
+#include <complex>
 
 namespace ra::cache {
 
