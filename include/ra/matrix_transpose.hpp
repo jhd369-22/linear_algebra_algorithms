@@ -2,7 +2,7 @@
 #include <cstdio>
 
 namespace ra::cache {
-    // cache-oblivious matrix transpose
+    
     template <typename T>
     void matrix_transpose_helper(const T* a, std::size_t m, std::size_t n, T* b,
                                  std::size_t t_m, std::size_t t_n) {
@@ -26,13 +26,15 @@ namespace ra::cache {
         return;
     }
 
+    // cache-oblivious matrix transpose
     template <class T>
     void matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b) {
 
         if(a == b) {
-            T tmp[n * m];
+            T* tmp = new T[n * m];
             matrix_transpose_helper(a, m, n, tmp, m, n);
             std::copy(tmp, tmp + n * m, b);
+            delete[] tmp;
         }
         else{
             matrix_transpose_helper(a, m, n, b, m, n);
