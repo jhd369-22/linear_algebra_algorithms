@@ -25,7 +25,7 @@ namespace ra::cache {
 
         // combine
         for (size_t k = 0; k < n / 2; ++k) {
-            T t = std::exp(std::complex<double>(0, -2 * std::numbers::pi_v<double> * k / n)) * odd[k];
+            T t = std::exp(T(0, -2 * std::numbers::pi_v<double> * k / n)) * odd[k];
             x[k] = even[k] + t;
             x[k + n / 2] = even[k] - t;
         }
