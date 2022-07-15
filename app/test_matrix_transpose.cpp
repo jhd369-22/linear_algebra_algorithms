@@ -12,9 +12,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
         TestType b[m * n];
         TestType c[m * n];
 
-        rc::naive_matrix_transpose(a, m, n, b);
+        rc::naive_matrix_transpose(&a[0], m, n, &b[0]);
 
-        rc::matrix_transpose(a, m, n, c);
+        rc::matrix_transpose(a, m, n, &c[0]);
 
         for(std::size_t i = 0; i < n; ++i) {    // b is n x m matrix
             for(std::size_t j = 0; j < m; ++j) {
@@ -29,9 +29,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
         TestType b[m * n];
         TestType c[m * n];
 
-        rc::naive_matrix_transpose(a, m, n, b);
+        rc::naive_matrix_transpose(&a[0], m, n, &b[0]);
 
-        rc::matrix_transpose(a, m, n, c);
+        rc::matrix_transpose(a, m, n, &c[0]);
 
         for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
             for (std::size_t j = 0; j < m; ++j) {
@@ -50,9 +50,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
         TestType b[m * n];
         TestType c[m * n];
 
-        rc::naive_matrix_transpose(a, m, n, b);
+        rc::naive_matrix_transpose(&a[0], m, n, &b[0]);
 
-        rc::matrix_transpose(a, m, n, c);
+        rc::matrix_transpose(a, m, n, &c[0]);
 
         for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
             for (std::size_t j = 0; j < m; ++j) {
@@ -74,9 +74,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
         TestType b[m * n];
         TestType c[m * n];
 
-        rc::naive_matrix_transpose(a, m, n, b);
+        rc::naive_matrix_transpose(&a[0], m, n, &b[0]);
 
-        rc::matrix_transpose(a, m, n, c);
+        rc::matrix_transpose(a, m, n, &c[0]);
 
         for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
             for (std::size_t j = 0; j < m; ++j) {
@@ -101,9 +101,9 @@ TEMPLATE_TEST_CASE("matrix transpose", "[matrix_transpose]", float, double, std:
         TestType b[m * n];
         TestType c[m * n];
 
-        rc::naive_matrix_transpose(a, m, n, b);
+        rc::naive_matrix_transpose(&a[0], m, n, &b[0]);
 
-        rc::matrix_transpose(a, m, n, c);
+        rc::matrix_transpose(a, m, n, &c[0]);
 
         for (std::size_t i = 0; i < n; ++i) {  // b is n x m matrix
             for (std::size_t j = 0; j < m; ++j) {
