@@ -43,9 +43,22 @@ namespace ra::cache {
 
     template <class T>
     void naive_matrix_transpose(const T* a, std::size_t m, std::size_t n, T* b) {
-        for (std::size_t i = 0; i < m; ++i) {
-            for (std::size_t j = 0; j < n; ++j) {
-                b[j * m + i] = a[i * n + j];
+        if (a == b) {
+            T* tmp = new T[n * m];
+            for (std::size_t i = 0; i < m; ++i) {
+                for (std::size_t j = 0; j < n; ++j) {
+                    tmp[j * m + i] = a[i * n + j];
+                }
+            }
+            std::copy(tmp, tmp + n * m, b);
+            
+            delete[] tmp;
+        }
+        else {
+            for (std::size_t i = 0; i < m; ++i) {
+                for (std::size_t j = 0; j < n; ++j) {
+                    b[j * m + i] = a[i * n + j];
+                }
             }
         }
     }
