@@ -29,6 +29,11 @@ namespace ra::cache {
             x[k] = even[k] + t;
             x[k + n / 2] = even[k] - t;
         }
+
+        delete[] even;
+        delete[] odd;
+
+        return;
     }
 
 }  // namespace ra::cache
