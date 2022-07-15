@@ -26,5 +26,5 @@ target_link_libraries(test_matrix_transpose Catch2::Catch2)
 add_executable(test_matrix_multiply app/test_matrix_multiply.cpp)
 target_link_libraries(test_matrix_multiply Catch2::Catch2)
 
-# add_executable(test_fft app/test_fft.cpp)
-# target_link_libraries(test_fft Catch2::Catch2)
+add_executable(test_fft app/test_fft.cpp)
+target_link_libraries(test_fft Catch2::Catch2)
